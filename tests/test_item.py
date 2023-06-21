@@ -9,7 +9,8 @@ def test_calculate_total_price(self):
 
 def test_apply_discount(self):
     item3 = Item("Смартфон", 1000, 10)
+    print(item3)
     Item.pay_rate = 0.7
     item3.apply_discount()
-    print(item3.price)
+    assert item3.price == 700
 
