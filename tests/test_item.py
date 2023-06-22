@@ -12,3 +12,9 @@ def test_apply_discount():
     item3.apply_discount()
     assert item3.price == 700
 
+
+def test_name():
+    assert item1.name == 'Смартфон'
+
+def test_string_to_number():
+    assert item1.string_to_number('20') == 20
