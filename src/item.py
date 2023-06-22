@@ -60,7 +60,7 @@ class Item:
               quantity = row['quantity']
               cls(name, price, quantity)
 
-            print(cls)
+            #print(cls)
 
 
     @staticmethod
