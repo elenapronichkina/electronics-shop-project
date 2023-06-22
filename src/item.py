@@ -44,14 +44,14 @@ class Item:
     def name(self, name):
         """проверяет, что длина наименования товара не больше 10 симвовов"""
         if len(name) <= 10:
-            self.__name == name
+            self.__name = name
         else:
             raise Exception("Длина наименования товара превышает 10 символов")
 
     @classmethod
     def instantiate_from_csv(cls):
         """инициализирует экземпляры класса Item данными из файла src/items.csv"""
-        with open(os.path.join(os.path.dirname(__file__)), 'items.csv', newline='', encoding="utf-8") as csvfile:
+        with open(os.path.join(os.path.dirname(__file__)), 'items.csv', newline='', encoding="windows-1251") as csvfile:
             cls.all = []
             reader = csv.DictReader(csvfile)
             for row in reader:
@@ -64,6 +64,7 @@ class Item:
 
 
     @staticmethod
-    def string_to_number():
+    def string_to_number(quantity):
         """возвращает число из числа-строки"""
-        print(len(cls.all))
+        number = int(quantity)
+        return number
