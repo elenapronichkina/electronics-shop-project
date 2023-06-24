@@ -51,20 +51,21 @@ class Item:
     @classmethod
     def instantiate_from_csv(cls):
         """инициализирует экземпляры класса Item данными из файла src/items.csv"""
-        with open(os.path.join(os.path.dirname(__file__)), 'items.csv', newline='', encoding="windows-1251") as csvfile:
-            cls.all = []
+        cls.all = []
+        with open(os.path.join(os.path.dirname(__file__), 'items.csv'), newline='', encoding="windows-1251") as csvfile:
+
             reader = csv.DictReader(csvfile)
             for row in reader:
-              name = row['name']
-              price = row['price']
-              quantity = row['quantity']
-              cls(name, price, quantity)
-
-            #print(cls)
+                name = row['name']
+                price = row['price']
+                quantity = row['quantity']
+                cls(name, price, quantity)
+                cls.all.append(cls)
+            print(cls.all)
 
 
     @staticmethod
     def string_to_number(quantity):
         """возвращает число из числа-строки"""
-        number = int(quantity)
+        number = int(float(quantity))
         return number
