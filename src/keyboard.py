@@ -3,17 +3,16 @@ from src.item import Item
 class Mixin:
     kb_language = "EN"
     def __init__(self):
-        self.language = self.kb_language
+        self.__language = self.kb_language
     @property
-    def get_language(self):
-        return self.language
+    def language(self):
+        return self.__language
     def change_lang(self):
-        kb_language = "EN"
-        if self.language == kb_language:
-            self.language = "RU"
+        if self.__language == "EN":
+            self.__language = "RU"
         else:
-            self.language = "EN"
-        return self.language
+            self.__language = "EN"
+        return self
 
 class KeyBoard(Item, Mixin):
     """
@@ -23,6 +22,6 @@ class KeyBoard(Item, Mixin):
         # Вызываем метод базового класса
         super().__init__(name, price, quantity)
         # Дополнительный код
-        self.language = language
-        self.__name = name
+        # self.language = language
+        # self.__name = name
 
