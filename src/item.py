@@ -15,6 +15,7 @@ class Item:
         :param price: Цена за единицу товара.
         :param quantity: Количество товара в магазине.
         """
+        super().__init__()
         self.__name = name
         self.price = price
         self.quantity = quantity
@@ -27,9 +28,9 @@ class Item:
         return f'{self.__name}'
 
     def calculate_total_price(self) -> float:
+
         """
         Рассчитывает общую стоимость конкретного товара в магазине.
-
         :return: Общая стоимость товара.
         """
         self.total_price = self.price * self.quantity
