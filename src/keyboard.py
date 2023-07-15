@@ -18,7 +18,7 @@ class KeyBoard(Item, Mixin):
     """
     дочерний класс.
     """
-    def __init__(self, name: str, price: float, quantity: int, language):
+    def __init__(self, name: str, price: float, quantity: int):
         # Вызываем метод базового класса
         super().__init__(name, price, quantity)
         # Дополнительный код
