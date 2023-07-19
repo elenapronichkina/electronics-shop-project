@@ -27,3 +27,6 @@ def test_repr():
 def test_str():
     assert str(item1) == 'Смартфон'
     assert str(item2) == 'Телефон'
+
+def test_instantiate_from_csv():
+    assert Item.instantiate_from_csv('item.csv') == "FileNotFoundError: Отсутствует файл item.csv"
