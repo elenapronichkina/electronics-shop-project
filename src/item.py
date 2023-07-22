@@ -1,7 +1,6 @@
 import csv
 import os.path
 
-
 class InstantiateCSVError(Exception):
     """Класс-исключение InstantiateCSVError"""
     def __int__(self, message="Файл item.csv поврежден"):
@@ -69,13 +68,7 @@ class Item:
             with open(os.path.join(os.path.dirname(__file__), 'items.csv'),
                   newline='', encoding="windows-1251") as csvfile:
                 reader = csv.DictReader(csvfile)
-        except FileNotFoundError:
-            return "FileNotFoundError: Отсутствует файл item.csv"
-            """если файл items.csv, из которого по умолчанию считываются данные, не найден →
-            выбрасывается исключение FileNotFoundError с сообщением 'Отсутствует файл item.csv'"""
-        else:
-            raise InstantiateCSVError
-        finally:
+
             for row in reader:
                 name = row['name']
                 price = row['price']
@@ -83,7 +76,12 @@ class Item:
                 cls(name, price, quantity)
                 cls.all.append(cls)
             print(cls.all)
-
+        except FileNotFoundError:
+            raise FileNotFoundError("Отсутствует файл item.csv")
+            """если файл items.csv, из которого по умолчанию считываются данные, не найден →
+             выбрасывается исключение FileNotFoundError с сообщением 'Отсутствует файл item.csv'"""
+        except KeyError:
+            raise InstantiateCSVError
 
     @staticmethod
     def string_to_number(quantity):
